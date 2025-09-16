@@ -1,7 +1,7 @@
 import { test } from '../fixtures/apiFixtures';
 import { expect } from '@playwright/test';
 
-// Добавляем объявление массива пользователей
+// Додаємо оголошення масиву користувачів
 const usersData = [
   { username: 'user1', email: 'user1@example.com', password: 'Password1!' },
   { username: 'user2', email: 'user2@example.com', password: 'Password2!' },
@@ -10,7 +10,7 @@ const usersData = [
 test.describe('Users API', () => {
   for (const user of usersData) {
     test(`Create and login user: ${user.username}`, async ({ users }) => {
-      // Создаём уникального пользователя, чтобы избежать конфликтов
+      // Створюємо унікального користувача, щоб уникнути конфліктів
       const uniqueUser = {
         username: `${user.username}${Date.now()}`,
         email: `${Date.now()}_${user.email}`,

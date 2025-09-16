@@ -4,8 +4,8 @@ export class TagsClient {
   constructor(private api: ApiClient) {}
 
   /**
-   * Получить все статьи с указанным тегом
-   * @param tag Название тега
+   * Отримати всі статті із зазначеним тегом
+   * @param tag Назва тега
    * @returns Response API
    */
   getArticlesByTag(tag: string) {
@@ -13,7 +13,7 @@ export class TagsClient {
   }
 
   /**
-   * Получить список всех тегов
+   * Отримати список усіх теґів
    */
   getAllTags() {
     return this.api.get('api/tags');

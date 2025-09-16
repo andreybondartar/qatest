@@ -17,14 +17,14 @@ test.describe('Parametrized Articles API', () => {
       password: 'TestQAAndriiPlaywright1)',
     };
 
-    // Создание пользователя
+    // Створення користувача
     const createResp = await users.createUser(user);
     if (!createResp.ok()) {
       const text = await createResp.text();
       throw new Error(`Create user failed: ${text}`);
     }
 
-    // Логин пользователя
+    // Логін користувача
     const loginResp = await users.loginUser({ email: user.email, password: user.password });
     if (!loginResp.ok()) {
       const text = await loginResp.text();
@@ -37,14 +37,13 @@ test.describe('Parametrized Articles API', () => {
 
   for (const articleData of articlesData) {
     test(`Create and verify article: ${articleData.title}`, async ({ articles }) => {
-      // Создание статьи
+
       const createResp = await articles.createArticle(token, articleData);
       expect(createResp.ok()).toBeTruthy();
 
       const created = await createResp.json();
       expect(created.article.title).toBe(articleData.title);
 
-      // Поиск статьи по тегу
       const searchResp = await articles.getArticles(`tag=${articleData.tagList[0]}`);
       expect(searchResp.ok()).toBeTruthy();
 
